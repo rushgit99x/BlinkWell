@@ -1,0 +1,62 @@
+from flask import current_app
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
+import MySQLdb
+
+class User(UserMixin):
+    def __init__(self, id, username, email):
+        self.id = id
+        self.username = username
+        self.email = email
+
+def load_user(user_id):
+    conn = current_app.config['get_db_connection']()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+    user_data = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    
+    if user_data:
+        user_dict = {
+            'id': user_data[0],
+            'username': user_data[1],
+            'email': user_data[2],
+            'password_hash': user_data[3]
+        }
+        return User(user_dict['id'], user_dict['username'], user_dict['email'])
+    return None
+
+def register_user(username, email, password):
+    password_hash = generate_password_hash(password)
+    conn = current_app.config['get_db_connection']()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("INSERT INTO users (username, email, password_hash) VALUES (%s, %s, %s)",
+                       (username, email, password_hash))
+        conn.commit()
+        return True
+    except MySQLdb.IntegrityError:
+        return False
+    finally:
+        cursor.close()
+        conn.close()
+
+def authenticate_user(username, password):
+    conn = current_app.config['get_db_connection']()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+    user_data = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    
+    if user_data:
+        user_dict = {
+            'id': user_data[0],
+            'username': user_data[1],
+            'email': user_data[2],
+            'password_hash': user_data[3]
+        }
+        if check_password_hash(user_dict['password_hash'], password):
+            return User(user_dict['id'], user_dict['username'], user_dict['email'])
+    return None
