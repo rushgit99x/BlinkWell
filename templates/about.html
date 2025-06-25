@@ -2,778 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>About Us - BlinkWell | AI-Powered Eye Health Platform</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #667eea;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #667eea;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #667eea;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><circle cx="25" cy="25" r="20" fill="url(%23g)"/><circle cx="75" cy="75" r="15" fill="url(%23g)"/></svg>') repeat;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero p {
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Story Section */
-        .story-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 6rem;
-        }
-
-        .story-content h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-
-        .story-content p {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .story-image {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .story-image i {
-            font-size: 6rem;
-            color: #667eea;
-            margin-bottom: 2rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(102, 126, 234, 0.05);
-            border-radius: 15px;
-            border: 2px solid rgba(102, 126, 234, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #667eea;
-            display: block;
-        }
-
-        .stat-label {
-            color: #666;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
-        /* Mission Section */
-        .mission-section {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .mission-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .mission-content h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-
-        .mission-content p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
-            line-height: 1.7;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .value-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .value-card i {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1.5rem;
-        }
-
-        .value-card h3 {
-            font-size: 1.4rem;
-            color: #333;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .value-card p {
-            color: #666;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* Team Section */
-        .team-section {
-            padding: 6rem 2rem;
-        }
-
-        .team-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .team-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .team-avatar {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-        }
-
-        .team-info {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .team-info h3 {
-            font-size: 1.4rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .team-role {
-            color: #667eea;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .team-bio {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .team-social {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .team-social a {
-            width: 40px;
-            height: 40px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #667eea;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .team-social a:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Technology Section */
-        .tech-section {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            padding: 6rem 2rem;
-            color: white;
-        }
-
-        .tech-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .tech-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-
-        .tech-content p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 3rem;
-            line-height: 1.7;
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .tech-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .tech-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .tech-card i {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .tech-card p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 6rem 2rem;
-            text-align: center;
-            color: white;
-        }
-
-        .cta-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .cta-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-
-        .cta-content p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 3rem;
-            line-height: 1.7;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-white {
-            background: white;
-            color: #667eea;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
-        }
-
-        .btn-outline-white {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline-white:hover {
-            background: white;
-            color: #667eea;
-            transform: translateY(-2px);
-        }
-
-        /* Footer Styles */
-        .footer {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 4rem 0 0;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #ecf0f1;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .footer-description {
-            color: #bdc3c7;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            max-width: 300px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: #ecf0f1;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            background: #667eea;
-            transform: translateY(-2px);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section ul li a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .footer-section ul li a:hover {
-            color: #667eea;
-            padding-left: 5px;
-        }
-
-        .contact-info {
-            color: #bdc3c7;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .contact-item i {
-            color: #667eea;
-            margin-top: 2px;
-            width: 16px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem 0;
-        }
-
-        .footer-bottom-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-bottom p {
-            color: #95a5a6;
-            margin: 0;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-bottom-links a {
-            color: #95a5a6;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-bottom-links a:hover {
-            color: #667eea;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: #333;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .footer-content {
-                grid-template-columns: 2fr 1fr 1fr;
-                gap: 2rem;
-            }
-            
-            .footer-section:nth-child(4) {
-                grid-column: 2;
-            }
-            
-            .footer-section:nth-child(5) {
-                grid-column: 3;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-
-            .story-section {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .values-grid,
-            .tech-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-            
-            .footer-description {
-                max-width: 100%;
-            }
-            
-            .footer-bottom-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-bottom-links {
-                justify-content: center;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        /* Scroll Animation */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
-
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="static/css/style-about.css">
 </head>
 <body>
-    
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
@@ -784,11 +18,11 @@
             <div class="nav-links">
                 <a href="{{ url_for('main.index') }}">Home</a>
                 <a href="{{ url_for('main.index') }}#features">Features</a>
-                <a href="{{ url_for('main.about') }}">About</a>
+                <a href="{{ url_for('main.about') }}" class="active">About</a>
                 <a href="{{ url_for('main.contact') }}">Contact</a>
-            </div>
-            <div class="cta-buttons">
-                <a href="{{ url_for('auth.login') }}" class="btn btn-primary">Get Started</a>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-primary">Get Started</a>
+                </div>
             </div>
             <div class="mobile-menu">
                 <i class="fas fa-bars"></i>
@@ -798,8 +32,8 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content fade-in-up">
-            <h1>Revolutionizing Eye Health with AI</h1>
+        <div class="hero-content animate-on-scroll">
+            <br><br><br><h1>Revolutionizing Eye Health with AI</h1>
             <p>We're on a mission to prevent vision loss through personalized, AI-powered recommendations and early risk detection.</p>
         </div>
     </section>
@@ -808,13 +42,11 @@
     <main class="main-content">
         <div class="container">
             <!-- Our Story Section -->
-            <section class="story-section scroll-reveal">
+            <section class="story-section animate-on-scroll">
                 <div class="story-content">
                     <h2>Our Story</h2>
                     <p>BlinkWell was born from a simple yet powerful observation: most eye diseases are preventable with the right lifestyle choices and early intervention. Our founders, a team of ophthalmologists, data scientists, and health technology experts, recognized that traditional eye care was reactive rather than proactive.</p>
-                    
                     <p>We saw millions of people developing dry eye disease, macular degeneration, and other vision problems that could have been prevented or significantly delayed with personalized lifestyle modifications. This realization sparked our mission to democratize access to preventive eye care through cutting-edge AI technology.</p>
-                    
                     <p>Today, BlinkWell combines advanced machine learning algorithms with comprehensive lifestyle analysis to provide personalized recommendations that can genuinely improve eye health outcomes. We're not just predicting risk – we're empowering action.</p>
                 </div>
                 <div class="story-image">
@@ -844,10 +76,9 @@
 
     <!-- Mission Section -->
     <section class="mission-section">
-        <div class="mission-content scroll-reveal">
+        <div class="mission-content animate-on-scroll">
             <h2>Our Mission & Values</h2>
             <p>We envision a world where vision loss is largely preventable through accessible, personalized, and scientifically-backed health recommendations. Our platform democratizes expert-level eye care insights, making them available to everyone, everywhere.</p>
-            
             <div class="values-grid">
                 <div class="value-card">
                     <i class="fas fa-shield-alt"></i>
@@ -876,9 +107,9 @@
     <!-- Team Section -->
     <section class="team-section">
         <div class="container">
-            <h2 class="scroll-reveal">Meet Our Expert Team</h2>
+            <h2 class="animate-on-scroll">Meet Our Expert Team</h2>
             <div class="team-grid">
-                <div class="team-card scroll-reveal">
+                <div class="team-card animate-on-scroll">
                     <div class="team-avatar">
                         <i class="fas fa-user-md"></i>
                     </div>
@@ -893,8 +124,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="team-card scroll-reveal">
+                <div class="team-card animate-on-scroll">
                     <div class="team-avatar">
                         <i class="fas fa-brain"></i>
                     </div>
@@ -909,8 +139,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="team-card scroll-reveal">
+                <div class="team-card animate-on-scroll">
                     <div class="team-avatar">
                         <i class="fas fa-chart-line"></i>
                     </div>
@@ -931,30 +160,45 @@
 
     <!-- Technology Section -->
     <section class="tech-section">
-        <div class="tech-content scroll-reveal">
+        <div class="tech-content animate-on-scroll">
             <h2>Cutting-Edge Technology</h2>
             <p>Our platform combines multiple advanced technologies to deliver personalized eye health insights with unprecedented accuracy and actionability.</p>
-            
             <div class="tech-grid">
-                <div class="tech-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>AI-Powered Risk Assessment</h3>
-                    <p>Our machine learning models analyze lifestyle, genetic, and environmental factors to predict eye disease risks with high precision.</p>
+                <div class="team-card animate-on-scroll">
+                    <div class="team-avatar">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3>AI-Powered Risk Assessment</h3>
+                        <p class="team-bio">Our machine learning models analyze lifestyle, genetic, and environmental factors to predict eye disease risks with high precision.</p>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <i class="fas fa-chart-bar"></i>
-                    <h3>Data-Driven Insights</h3>
-                    <p>Advanced analytics process vast datasets to deliver personalized recommendations based on real-world evidence.</p>
+                <div class="team-card animate-on-scroll">
+                    <div class="team-avatar">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3>Data-Driven Insights</h3>
+                        <p class="team-bio">Advanced analytics process vast datasets to deliver personalized recommendations based on real-world evidence.</p>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <i class="fas fa-eye"></i>
-                    <h3>Computer Vision</h3>
-                    <p>Our platform uses cutting-edge computer vision to analyze eye images for early signs of disease, enabling timely interventions.</p>
+                <div class="team-card animate-on-scroll">
+                    <div class="team-avatar">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3>Computer Vision</h3>
+                        <p class="team-bio">Our platform uses cutting-edge computer vision to analyze eye images for early signs of disease, enabling timely interventions.</p>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Cloud Integration</h3>
-                    <p>Secure cloud-based systems ensure seamless access to your eye health data and recommendations anytime, anywhere.</p>
+                <div class="team-card animate-on-scroll">
+                    <div class="team-avatar">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3>Cloud Integration</h3>
+                        <p class="team-bio">Secure cloud-based systems ensure seamless access to your eye health data and recommendations anytime, anywhere.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -962,7 +206,7 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="cta-content scroll-reveal">
+        <div class="cta-content animate-on-scroll">
             <h2>Join the Vision Revolution</h2>
             <p>Start your journey to better eye health today. Get personalized insights and take proactive steps to protect your vision.</p>
             <div class="cta-buttons">
@@ -972,10 +216,10 @@
         </div>
     </section>
 
-     <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-content">
+            <div class="footer-content animate-on-scroll">
                 <div class="footer-section">
                     <div class="footer-logo">
                         <i class="fas fa-eye"></i>
@@ -991,7 +235,6 @@
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-
                 <div class="footer-section">
                     <h4>Platform</h4>
                     <ul>
@@ -1002,7 +245,6 @@
                         <li><a href="#">AI Chatbot</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-section">
                     <h4>Resources</h4>
                     <ul>
@@ -1013,7 +255,6 @@
                         <li><a href="#">Help Center</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul>
@@ -1024,7 +265,6 @@
                         <li><a href="#">Careers</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <div class="contact-info">
@@ -1043,10 +283,9 @@
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
-                    <p>&copy; 2025 BlinkWell. All rights reserved.</p>
+                    <p>© 2025 BlinkWell. All rights reserved.</p>
                     <div class="footer-bottom-links">
                         <a href="#">Privacy</a>
                         <a href="#">Terms</a>
@@ -1058,69 +297,6 @@
         </div>
     </footer>
 
-    <script>
-        // Scroll reveal animations
-        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
-        
-        const revealOnScroll = () => {
-            scrollRevealElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('revealed');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.cssText = `
-                    display: flex;
-                    flex-direction: column;
-                    position: absolute;
-                    top: 70px;
-                    left: 0;
-                    width: 100%;
-                    background: white;
-                    padding: 1rem;
-                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                    gap: 1rem;
-                    text-align: center;
-                `;
-            }
-        });
-
-        // Adjust nav on resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                navLinks.style.cssText = '';
-                navLinks.style.display = 'flex';
-            } else {
-                navLinks.style.display = 'none';
-            }
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > lastScroll && currentScroll > 50) {
-                navbar.style.transform = 'translateY(-100%)';
-            } else {
-                navbar.style.transform = 'translateY(0)';
-            }
-            lastScroll = currentScroll;
-        });
-    </script>
+    <script src="static/js/js-about.js"></script>
 </body>
 </html>
