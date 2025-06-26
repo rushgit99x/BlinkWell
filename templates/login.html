@@ -375,7 +375,7 @@
         .alert-error {
             background: rgba(239, 68, 68, 0.1);
             color: #dc2626;
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 239, 68, 0.2);
         }
 
         .alert-success {
@@ -495,10 +495,10 @@
                 <span>or continue with</span>
             </div>
 
-            <button class="btn btn-google" id="googleBtn">
+            <a href="{{ url_for('auth.google_login') }}" class="btn btn-google" id="googleBtn">
                 <i class="fab fa-google"></i>
                 Continue with Google
-            </button>
+            </a>
 
             <div class="auth-footer">
                 <p>Don't have an account?</p>
@@ -523,20 +523,6 @@
                     submitBtn.disabled = false;
                 }
             }, 5000);
-        });
-
-        // Google Auth simulation
-        document.getElementById('googleBtn').addEventListener('click', function() {
-            const originalText = this.innerHTML;
-            this.innerHTML = '<span class="loading"></span> Connecting to Google...';
-            this.disabled = true;
-            
-            setTimeout(() => {
-                this.innerHTML = originalText;
-                this.disabled = false;
-                // In a real implementation, this would redirect to Google OAuth
-                alert('Google Auth integration would be implemented here');
-            }, 2000);
         });
 
         // Input focus effects
@@ -566,12 +552,14 @@
         // Navbar scroll effect (if needed)
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = 'none';
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                    navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.boxShadow = 'none';
+                }
             }
         });
     </script>

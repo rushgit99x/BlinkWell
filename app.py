@@ -5,6 +5,7 @@ from routes.auth import auth_bp
 from routes.main import main_bp
 from models.database import init_db
 from models.user import load_user
+from oauth import init_oauth
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -17,6 +18,9 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
 login_manager.login_message = 'Please log in to access this page.'
+
+# Initialize OAuth
+init_oauth(app)
 
 # Register user_loader
 login_manager.user_loader(load_user)
