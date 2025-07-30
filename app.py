@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_login import LoginManager
 from config import Config
 from routes.auth import auth_bp
@@ -9,6 +9,8 @@ from oauth import init_oauth
 
 app = Flask(__name__)
 app.config.from_object(Config)
+app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB limit
 
 # Initialize database
 init_db(app)
